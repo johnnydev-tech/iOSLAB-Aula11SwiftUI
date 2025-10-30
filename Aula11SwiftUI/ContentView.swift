@@ -8,14 +8,35 @@
 import SwiftUI
 
 struct ContentView: View {
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        
+        NavigationStack{
+            ScrollView{
+                VStack(spacing:12){
+                    ForEach(1...4, id: \.self){ i in
+                        let title = "\(i) - Johnny Freire"
+                        let subtitle = "Desenvolvedor \(i)"
+                        let image = "me"
+                        NavigationLink {
+                            Challenge6View(
+                                title: title,
+                                subtitle: subtitle,
+                                image: image
+                            )
+                        } label: {
+                            Challenge5Component(
+                                title: title,
+                                subtitle: subtitle,
+                            )
+                        }
+                        .buttonStyle(.plain)
+                        
+                    }
+                }
+                
+            }.padding(.horizontal)
         }
-        .padding()
     }
 }
 
